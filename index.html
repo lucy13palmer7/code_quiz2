@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Code Quiz Homework</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="question-container">
+        <h1>Code Quiz</h1>
+        <div class="display">
+            <h1 class="display__time-left"></h1>
+            <p class="display__end-time"></p>
+
+
+        </div>
+        <div id="questions">Question:</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <div class="controls">
+          <a id="next-btn" class="btn btn-warning" href="#" role="button"
+            >Next</a
+          >
+          <a
+            id="cancel-btn"
+            class="btn btn-danger"
+            href="home.html"
+            role="button"
+            >Cancel Quiz</a
+          >
+        </div>
+      </div>
+    </div>
+    <div id="game"></div>
+    <h2 id="time"></h2>
+    <script src="script.js"></script>
+  </body>
+</html>
