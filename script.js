@@ -1,15 +1,8 @@
-// start button from homepage
-// var start = document.getElementById("start-btn");
-// start.addEventListener("click", function() {
-//   start.startQuiz();
-// });
-// all variables from the index page starting from the top
-// first, display question with options
-// display timer
-// timer function
 let countdown;
-
+const timerDisplay = document.querySelector("#display__time-left");
+const buttons = document.querySelectorAll("[data-time]");
 function timer(second) {
+  clearInterval(countdown);
   const now = Date.now();
   const then = now + second * 1000;
   displayTimeLeft(second);
@@ -26,5 +19,17 @@ function timer(second) {
 function displayTimeLeft(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${
+    remainderSeconds < 10 ? "0" : ""
+  }${remainderSeconds}`;
+  timerDisplay.textContent = display;
   console.log({ minutes, remainderSeconds });
 }
+
+function startTimer() {
+  // console.log(this);
+  const seconds = parseInt(this.dataset.time);
+  timer(seconds);
+}
+
+buttons.forEach(button => button.addEventListener("click", startTimer));

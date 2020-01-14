@@ -18,10 +18,7 @@
       <div id="question-container">
         <h1>Code Quiz</h1>
         <div class="display">
-            <h1 class="display__time-left"></h1>
-            <p class="display__end-time"></p>
-
-
+          <h1 id="display__time-left">___</h1>
         </div>
         <div id="questions">Question:</div>
         <div id="answer-buttons" class="btn-grid">
@@ -31,6 +28,15 @@
           <button class="btn">Answer 4</button>
         </div>
         <div class="controls">
+          <button data-time="300" class="btn btn-success">Start Quiz</button>
+          <!-- <a
+            data-time="124"
+            id="start-btn"
+            class="btn btn-success"
+            href="index.html"
+            role="button"
+            >Start Quiz</a
+          > -->
           <a id="next-btn" class="btn btn-warning" href="#" role="button"
             >Next</a
           >
@@ -44,8 +50,6 @@
         </div>
       </div>
     </div>
-    <div id="game"></div>
-    <h2 id="time"></h2>
     <script src="script.js"></script>
   </body>
 </html>
