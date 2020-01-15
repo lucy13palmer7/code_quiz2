@@ -13,14 +13,14 @@
     />
     <link rel="stylesheet" href="style/style.css" />
   </head>
-  <body>
+  <body id="body">
     <div class="container">
-      <div id="question-container">
-        <h1>Code Quiz</h1>
-        <div class="display">
-          <h1 id="display__time-left">___</h1>
-        </div>
-        <div id="questions">Question:</div>
+      <h1>Code Quiz</h1>
+      <div class="display">
+        <h1 id="display__time-left">___</h1>
+      </div>
+      <div id="question-container" class="hide">
+        <div id="question">Question:</div>
         <div id="answer-buttons" class="btn-grid">
           <button class="btn">Answer 1</button>
           <button class="btn">Answer 2</button>
@@ -28,15 +28,7 @@
           <button class="btn">Answer 4</button>
         </div>
         <div class="controls">
-          <button data-time="300" class="btn btn-success">Start Quiz</button>
-          <!-- <a
-            data-time="124"
-            id="start-btn"
-            class="btn btn-success"
-            href="index.html"
-            role="button"
-            >Start Quiz</a
-          > -->
+          <button id="start-btn" data-time="300" class="btn btn-success">Start Quiz</button>
           <a id="next-btn" class="btn btn-warning" href="#" role="button"
             >Next</a
           >
