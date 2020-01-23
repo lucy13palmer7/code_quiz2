@@ -1,4 +1,4 @@
-:root {
+body:root {
   --hue-neutral: hsl(180, 96%, 100%);
   --hue-wrong: hsl(350, 96%, 47%);
   --hue-correct: hsl(102, 96%, 58%);
@@ -6,6 +6,13 @@
 body {
   --hue: var(--hue-neutral);
   background-color: hsl(180, 96%, 100%);
+}
+body.correct {
+  --hue: var(--hue-correct);
+}
+
+body.wrong {
+  --hue: var(--hue-wrong);
 }
 .container {
   width: 800px;
@@ -23,7 +30,4 @@ body {
 }
 .btn {
   background-color: blueviolet;
-}
-.btn:hover {
-  border-color: black;
 }

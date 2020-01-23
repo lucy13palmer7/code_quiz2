@@ -5,8 +5,9 @@ const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionsContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
-const answersButtonsElement = document.getElementById("answer-buttons");
+const answerButtonsElement = document.getElementById("answer-buttons");
 let shuffledQuestions, currentQuestionIndex;
+//
 function timer(second) {
   clearInterval(countdown);
   const now = Date.now();
@@ -36,7 +37,7 @@ function startTimer() {
   const seconds = parseInt(this.dataset.time);
   timer(seconds);
 }
-
+//
 buttons.forEach(button => button.addEventListener("click", startTimer));
 buttons.forEach(button => button.addEventListener("click", startQuiz));
 //
@@ -54,7 +55,6 @@ function setNextQuestion() {
 }
 function showQuestion(question) {
   questionElement.innerText = question.question;
-  // *****
   question.answers.forEach(answer => {
     const button = document.createElement("button");
     button.innerText = answer.text;
@@ -63,23 +63,30 @@ function showQuestion(question) {
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
-    answersButtonsElement.appendChild(button);
+    answerButtonsElement.appendChild(button);
   });
 }
 function resetState() {
   nextButton.classList.add("hide");
-  while (answersButtonsElement.firstChild) {
-    answersButtonsElement.removeChild(answersButtonsElement.firstChild);
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
 }
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
   setStatusClass(document.body, correct);
-  Array.from(answersButtonsElement.children).forEach(button => {
+  Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
   });
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove("hide");
+  } else {
+    startButton.innerText = "Restart";
+    startButton.classList.remove("hide");
+  }
 }
+
 function setStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
@@ -88,19 +95,57 @@ function setStatusClass(element, correct) {
     element.classList.add("wrong");
   }
 }
+
 function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
 }
+
 // questions for quiz set up as an array with another array for answers and all of those answers are in an object
 const questions = [
   {
-    question: "what is 2+2?",
+    question: "Inside which HTML element do we put the JavaScript?",
     answers: [
-      { text: "4", correct: true },
-      { text: "9", correct: false },
-      { text: "3", correct: false },
-      { text: "12", correct: false }
+      { text: "<script>", correct: true },
+      { text: "<scripting>", correct: false },
+      { text: "<javascript>", correct: false },
+      { text: "<js>", correct: false }
+    ]
+  },
+  {
+    question: "Where is the correct place to insert a JavaScript?",
+    answers: [
+      { text: "<head>", correct: false },
+      { text: "<body>", correct: true },
+      { text: "<footer>", correct: false },
+      { text: "<p>", correct: false }
+    ]
+  },
+  {
+    question: "How do you create a function in JavaScript?",
+    answers: [
+      { text: "function:myFunction", correct: false },
+      { text: "function = myFunction", correct: false },
+      { text: "function === myFunction", correct: false },
+      { text: "function myFunction()", correct: true }
+    ]
+  },
+  {
+    question: "How do you round the number 7.25, to the nearest integer?",
+    answers: [
+      { text: "Math.rnd(7.25)", correct: false },
+      { text: "round(7.25)", correct: false },
+      { text: "Math.round(7.25)", correct: true },
+      { text: "rnd(7.27)", correct: false }
+    ]
+  },
+  {
+    question: "How to write an IF statement in JavaScript?",
+    answers: [
+      { text: "if i == 5 then", correct: false },
+      { text: "if (i == 5)", correct: true },
+      { text: "if i = 5 then", correct: false },
+      { text: "if i = 5", correct: false }
     ]
   }
 ];
